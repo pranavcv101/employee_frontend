@@ -1,25 +1,29 @@
 .formgroup {
-
+background-color: white;
 height: 100%;
+display: flex;
+flex-direction: column;
+padding: 40px;
+gap:40px;
 }
 
 
 .parentclass {
     display: flex;
     flex-wrap: wrap;
-    gap: 90px;
-    background-color: white;
-    padding: 40px;
-
+    gap: 40px;
+    justify-content: space-between;
 }
 
 .AddressContainer {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    width: 100%;
+    gap: 10px;
+    
 }
 
-.form-group-submit{
+.twobuttonform{
  
+ display: flex;
+ gap: 30px;
 }

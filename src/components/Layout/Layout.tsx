@@ -14,14 +14,14 @@ export const Layout=({
         return     ( <div className="flex-container">
                     <Aside sidebar = "Employee List"/>
                     
-                    <main>
+                    <main className='main'>
                         <div className='formhead'>
                             Create Employee
                         </div>
-                        <div>
-                            <Outlet/>
-                            {/* {children} */}
-                        </div>
+                        
+                         <Outlet/>
+                        {/* {children} */}
+                        
                     </main>
                 </div>
         )

@@ -27,7 +27,7 @@ export const CreateEmployee = () => {
                         <Input type='text' id='Address3' placeholder='Address Line 2' />
                     </div>
                 </div>
-                <div className='form_group-submit'>
+                <div className='twobuttonform'>
                     <Button text="Create" />
                     <Button text='Cancel' variant='secondary' />
                 </div>
