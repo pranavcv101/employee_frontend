@@ -6,7 +6,7 @@ import Input from '../../components/Input/input'
 import Button from '../../components/Button/Button'
 import { useEffect, useRef, useState } from 'react'
 import useMousePosition from '../../hooks/UseMousePosition'
-
+import useLocalStorage from '../../hooks/useLocalStorage'
 
 export const Login = () => {
     // let [count,setCounter] = useState(0)
@@ -24,7 +24,8 @@ export const Login = () => {
     let [password,setPassword] = useState('')
     let [message , setMessage] = useState('')
 
-    let [showpass,setShowPass] = useState(true)
+    // let [showpass,setShowPass] = useState(true)
+    let [showpass ,setShowPass] = useLocalStorage("showpass","false")
     const usernameRef = useRef<HTMLInputElement>(null)
     useEffect(()=> {
        const x =username.length;
@@ -40,7 +41,6 @@ export const Login = () => {
             usernameRef.current.focus()
         }
     },[])
-
     return (
 
         <div className='container'>
@@ -48,6 +48,7 @@ export const Login = () => {
                  <img src={kvlogin} className="profile"/>
             </div>
             <div className='right-panel'>
+            <form>
                     {/* <div className='counter'>
                         counter value : {count}
                         <Button text="add" onClick={increaseCounter}/>
@@ -60,13 +61,13 @@ export const Login = () => {
                     <Input label='Username' type='text' id='username' placeholder='Username' onChange={changusername} value={username} inputref = {usernameRef} 
                     endAdornment = {<button type="button"  disabled = {username.length === 0} onClick={()=>setValue('')}>Clear</button>}/>
                     <p>{message}</p>
-                    <Input label='Password' type={showpass?'password':'text'} id='password' placeholder='Password' onChange = {(event:any) => {setPassword(event.target.value)} } value ={password}/>
+                    <Input label='Password' type={JSON.parse(showpass)?'password':'text'} id='password' placeholder='Password' onChange = {(event:any) => {setPassword(event.target.value)} } value ={password}/>
                     <div>
-                    <input  type='checkbox' id='showpass' onClick={()=>setShowPass(!showpass)}/>
+                    <input  type='checkbox' id='showpass' checked  = {JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
                        Show password
                     </div>
-                    <Button text="Login" onClick={()=>console.log("login success")}></Button>
-
+                    <Button text="Login" onClick={()=>window.localStorage.setItem("isLoggedIn","true")}></Button>
+            </form>
             </div>
         </div>
     )

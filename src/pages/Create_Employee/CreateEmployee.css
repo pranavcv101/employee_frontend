@@ -1,17 +1,15 @@
 .formgroup {
 
-    display: flex;
-    gap: 20px
+height: 100%;
 }
 
 
 .parentclass {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin: 50px;
+    gap: 90px;
     background-color: white;
-    padding: 20px;
+    padding: 40px;
 
 }
 
@@ -23,7 +21,5 @@
 }
 
 .form-group-submit{
-    margin-top: 20px;
-    display: flex;
-    padding: 50px;
+ 
 }
