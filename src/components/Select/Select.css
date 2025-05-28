@@ -1,0 +1,34 @@
+.select {
+    background-color: white;
+    padding: 10px;
+    border-style: solid;
+    color: gray;
+    width: 32%;
+}
+
+.SelectWrapperContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 350px;
+}
+
+.selectinputWrapper {
+display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 100px;
+
+flex: 1;
+gap: 20px;
+padding: 12px;
+} 
+
+
+.selectinputdiv {
+  height: 100px;
+width: 100%;
+}
+
+
+

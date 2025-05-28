@@ -1,0 +1,25 @@
+.WrapperContainer{
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+}
+
+.inputWrapper {
+display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 30px;
+width: 100%;
+flex: 1;
+gap: 20px;
+padding: 12px;
+} 
+
+
+.inputdiv {
+  height: 100px;
+width: 250px;
+}
+
+
+
