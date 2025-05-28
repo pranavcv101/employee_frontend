@@ -1,7 +1,7 @@
 import './Button.css'
 
 const Button = ({text,onClick,variant = "primary" , type , className}: {text?:string , onClick?:()=>void,variant?:string ,type?:any , className?:string}) => {
-    return <button className={`button button--${variant}`} onClick={onClick}>{text}</button>
+    return <button className={`button  button--${variant} ${className}`} onClick={onClick}>{text}</button>
 }
 
 export default Button;

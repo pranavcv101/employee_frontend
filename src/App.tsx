@@ -22,7 +22,6 @@ const router = createBrowserRouter([
     path:"/login",
     element:isLoggedIn() ? <Navigate to="/employees" />:<Login/>,
     errorElement:<NotFound/>
-
   },
   {
     path:"/employees",

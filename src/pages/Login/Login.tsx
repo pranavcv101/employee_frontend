@@ -66,7 +66,7 @@ export const Login = () => {
                     <input  type='checkbox' id='showpass' checked  = {JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
                        Show password
                     </div>
-                    <Button text="Login" onClick={()=>window.localStorage.setItem("isLoggedIn","true")}></Button>
+                    <Button text="Login" onClick={()=>window.localStorage.setItem("isLoggedIn","true")}  className='loginbutton'></Button>
             </form>
             </div>
         </div>
