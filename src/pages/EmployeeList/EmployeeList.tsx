@@ -9,7 +9,8 @@ import { useEffect, useState } from "react";
 import PopUp from "../../components/Popup/PopUp";
 import { Select } from "../../components/Select/Select";
 // const navigate  = useNavigate();
-
+import { useSelector } from "react-redux";
+import type { EmployeeState } from "../../store/employee/employee.types";
 
 export const EmployeeList = () => {
 
@@ -35,67 +36,69 @@ export const EmployeeList = () => {
     const handleClick = () => {
         navigate("/employees/create")
     }
-    const unfilteredEmplooyees = [{
-        id: 1,
-        name: "Employee1",
-        experience: 5,
-        role: "Designer",
-        joining: "26-09-2006",
-        status: "Probation",
-        address: "adresss",
+    // const unfilteredEmplooyees = [{
+    //     id: 1,
+    //     name: "Employee1",
+    //     experience: 5,
+    //     role: "Designer",
+    //     joining: "26-09-2006",
+    //     status: "Probation",
+    //     address: "adresss",
 
-    },
-    {
-        id: 2,
-        name: "Employee2",
-        experience: 5,
-        role: "Designer",
-        joining: "26-09-2006",
-        status: "Probation",
-        address: "adresss",
+    // },
+    // {
+    //     id: 2,
+    //     name: "Employee2",
+    //     experience: 5,
+    //     role: "Designer",
+    //     joining: "26-09-2006",
+    //     status: "Probation",
+    //     address: "adresss",
 
-    },
-    {
-        id: 3,
-        name: "Employee1",
-        experience: 5,
-        role: "Designer",
-        joining: "26-09-2006",
-        status: "Probation",
-        address: "adresss",
+    // },
+    // {
+    //     id: 3,
+    //     name: "Employee1",
+    //     experience: 5,
+    //     role: "Designer",
+    //     joining: "26-09-2006",
+    //     status: "Probation",
+    //     address: "adresss",
 
-    },
-    {
-        id: 4,
-        name: "Employee1",
-        experience: 5,
-        role: "Designer",
-        joining: "26-09-2006",
-        status: "Probation",
-        address: "adresss",
+    // },
+    // {
+    //     id: 4,
+    //     name: "Employee1",
+    //     experience: 5,
+    //     role: "Designer",
+    //     joining: "26-09-2006",
+    //     status: "Probation",
+    //     address: "adresss",
 
-    },
-    {
-        id: 5,
-        name: "Employee1",
-        experience: 5,
-        role: "Designer",
-        joining: "26-09-2006",
-        status: "Active",
-        address: "adresss",
+    // },
+    // {
+    //     id: 5,
+    //     name: "Employee1",
+    //     experience: 5,
+    //     role: "Designer",
+    //     joining: "26-09-2006",
+    //     status: "Active",
+    //     address: "adresss",
 
-    },
-    {
-        id:6,
-        name: "Employee1",
-        experience: 5,
-        role: "Designer",
-        joining: "26-09-2006",
-        status: "Inactive",
-        address: "adresss",
+    // },
+    // {
+    //     id:6,
+    //     name: "Employee1",
+    //     experience: 5,
+    //     role: "Designer",
+    //     joining: "26-09-2006",
+    //     status: "Inactive",
+    //     address: "adresss",
 
-    }
-    ]
+    // }
+    // ]
+    
+    const unfilteredEmplooyees = useSelector((state:EmployeeState)=>state.employees)
     
     // const [emplooyees,setFilteredEmployees] = useState(unfilteredEmplooyees)
     
@@ -142,16 +145,16 @@ export const EmployeeList = () => {
             {
                 emplooyees.map((emp)=>{
                     return(
-                        <div className="row" onClick={()=>navigate(`/employees/${emp.id}`)}>
+                        <div className="row" onClick={()=>navigate(`/employees/${emp.employeeId}`)}>
                             <div className="data">{emp.name}</div>
-                            <div className="data">{emp.id}</div>
-                            <div className="data">{emp.joining}</div>
+                            <div className="data">{emp.employeeId}</div>
+                            {/* <div className="data">{emp.joining}</div> */}
                             <div className="data">{emp.role}</div>
                             <div className={`data status ${emp.status}`}>{emp.status}</div>
                             <div className="data">{emp.experience} Years</div>
                             <div className="data">
                                 <button className="icon-only" onClick={handleDelete}><img src={bin}/></button>
-                                <button className="icon-only" onClick={()=>{navigate(`/employees/edit/${emp.id}`)}}><img src={pencil}/></button>
+                                <button className="icon-only" onClick={()=>{navigate(`/employees/edit/${emp.employeeId}`)}}><img src={pencil}/></button>
                             </div>
                         </div>
                     ) 

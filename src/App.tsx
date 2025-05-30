@@ -8,7 +8,8 @@ import { Layout } from './components/Layout/Layout'
 import { EmployeeList } from './pages/EmployeeList/EmployeeList'
 import { GetEmployeeById } from './pages/GetEmployee/GetEmployeeById'
 import { EditEmployee } from './pages/Edit/Edit'
-
+import { Provider } from "react-redux";
+import { store } from './store/store'
 
 const router = createBrowserRouter([
   //  {
@@ -53,7 +54,10 @@ function App() {
 
   return (
     <>
-        <RouterProvider router={router}/>
+        <Provider store={store}>
+              <RouterProvider router={router}/>
+        </Provider>
+      
         {/* <CreateEmployee/> */}
         {/* <UncontrolledLogin/> */}
     </>

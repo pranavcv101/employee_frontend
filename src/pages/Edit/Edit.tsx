@@ -308,7 +308,7 @@ export const EditEmployee = () => {
             <div className='formgroup'>
                 <div className='editparentclass'>
                     <Input label='Employee Name' type='text' id='name' placeholder='Employee Name' value = {employee.name} onChange={(e)=>onChange("name",e.target.value)} />
-                    <Input label='Email' type='text' id='Email' placeholder='Email' value={employee.email} onChange ={(e) => onChange("eamil",e.target.value)}/>
+                    <Input label='Email' type='text' id='Email' placeholder='Email' value={employee.email} onChange ={(e) => onChange("email",e.target.value)}/>
 
                     <Input label='Joining Date' type='text' id='Joining Date' placeholder='Joining Date' value = {employee.joining} onChange={(e)=>onChange("joining",e.target.value)}/>
                     <Input label='Experience' type='text' id='Experience' placeholder='Experience' value = {employee.experience.toString()} onChange={(e)=>onChange("experience",e.target.value)}/>
