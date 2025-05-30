@@ -1,6 +1,6 @@
-import "./Button.css";
+import "./BigButton.css";
 
-const Button = ({
+const BigButton = ({
   text,
   onClick,
   variant,
@@ -20,9 +20,14 @@ const Button = ({
         className={`button  button--${variant} ${className}`}
         onClick={onClick} type ={type}
         >
+        <div className="button-icon-bk">
+        <img src={icon} />
+        </div>
+        <div className="button-text-bk">
         {text}
+        </div>
         </button>
   );
 };
 
-export default Button;
+export default BigButton;

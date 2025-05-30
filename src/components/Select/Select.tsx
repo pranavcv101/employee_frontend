@@ -1,9 +1,9 @@
 import './Select.css'
 
-export const Select=({options,id,label}:{options:SelectOption[],id:string,label:string}) => {
+export const Select=({options,id,label,variant,onChange}:{options:SelectOption[],id:string,label:string,variant?:string,onChange?:(event:any)=>void}) => {
     return <div className='SelectWrapperContainer'>
         <label>{label}</label>
-        <select id={id} className='selectinputWrapper'>
+        <select id={id} className={`selectinputWrapper ${variant}`} onChange={onChange}>
             { options.map ((option) => <option key = {option.value} value={option.value}> {option.label}</option>)}
         </select>
     </div>

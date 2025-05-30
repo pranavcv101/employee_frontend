@@ -5,33 +5,40 @@ import UncontrolledLogin from './pages/Login/UncontrolledLogin'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import NotFound from './components/NotFound/NotFound'
 import { Layout } from './components/Layout/Layout'
+import { EmployeeList } from './pages/EmployeeList/EmployeeList'
+import { GetEmployeeById } from './pages/GetEmployee/GetEmployeeById'
+import { EditEmployee } from './pages/Edit/Edit'
 
-const isLoggedIn = () => {
-  const token = localStorage.getItem("isLoggedIn");
-  return token === "true";
-};
 
 const router = createBrowserRouter([
-   {
+  //  {
+  //   path:"/",
+  //   element:isLoggedIn() ? <Navigate to="/employees" />:<Login/>,
+  //   errorElement:<NotFound/>
+  
+  //  },
+    {
     path:"/",
-    element:isLoggedIn() ? <Navigate to="/employees" />:<Login/>,
+    element:<Navigate to="/login" />,
     errorElement:<NotFound/>
   
    },
    {
     path:"/login",
-    element:isLoggedIn() ? <Navigate to="/employees" />:<Login/>,
+    element:<Login/>,
     errorElement:<NotFound/>
   },
   {
     path:"/employees",
-    element:isLoggedIn() ? <Layout />:<Login />,
+    element:<Layout />,
     children: [
       {index:true , element:<CreateEmployee/>},
-      {path:"create" , element:<CreateEmployee/>}
+      {path:"create" , element:<CreateEmployee/>},
+      {path:"employeelist" , element:<EmployeeList/>},
+      {path:":id" , element:<GetEmployeeById/>},
+      {path:"edit/:id",element:<EditEmployee/>}
     ]
     // errorElement:<NotFound/>
-
   },
 
   {

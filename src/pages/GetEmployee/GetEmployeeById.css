@@ -1,0 +1,38 @@
+.details {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    column-gap: 250px;
+    flex-wrap: wrap;
+    margin-right: 20%;
+    padding: 20px;
+    row-gap: 100px;
+    font-size:25px;
+    font-weight: 700;
+}
+
+.details-head {
+    color: #8B8D9D;
+}
+
+.bk {
+    background-color: #F5ECB8;
+    border-radius: 20px;
+    width: 150%;
+    display: flex;
+    justify-content: center;
+}
+
+.Probation {
+    background-color: #F5ECB8;
+}
+
+.Active {
+    background-color: #D3F4BE;
+
+}
+
+.Isactive {
+    background-color: #FFBFBF;
+
+}

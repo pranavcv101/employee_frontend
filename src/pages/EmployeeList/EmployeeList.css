@@ -1,0 +1,80 @@
+.table1 {
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+    width:100%;
+}
+
+.row {
+    display: flex;
+    gap:40px;
+    justify-content: space-around;
+    width:100%;
+    flex-direction: row;
+    background-color: white;
+    padding: 15px;
+}
+
+.rowhead {
+    background-color: #EAF9FF;
+}
+
+.data {
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+    flex-direction: row;
+}
+
+.status {
+    border-radius: 20px;
+    width: 70%;
+}
+
+.Probation {
+    background-color: #F5ECB8;
+}
+
+.Active {
+    background-color: #D3F4BE;
+}
+
+
+.Inactive {
+    background-color: #FFBFBF;
+}
+.formhead {
+    font-size: 30px;
+    background-color: white;
+    box-shadow: 1px 1px 1px #0000005a;
+    border-radius: 10px;
+    padding:20px;
+    display: flex;
+    justify-content: space-between
+}
+
+.icon-only {
+    border:none;
+    background: none;
+}
+
+
+.header-right-section {
+    display: flex;
+    gap:20px;
+}
+
+.filterby {
+    background-color: #EAF9FF;
+    width: 150px;
+    border-radius: 30px;
+    height: 50px;
+}
+
+.filterselect {
+    background-color: #EAF9FF;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+}
+

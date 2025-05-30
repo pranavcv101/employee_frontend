@@ -10,18 +10,16 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 350px;
+    width: 550px;
 }
 
 .selectinputWrapper {
 display: flex;
   border: 1px solid #ccc;
   border-radius: 4px;
-  height: 100px;
-
-flex: 1;
-gap: 20px;
-padding: 12px;
+  height: 60px;
+  gap: 20px;
+  padding: 12px;
 } 
 
 

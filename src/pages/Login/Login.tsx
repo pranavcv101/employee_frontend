@@ -7,8 +7,19 @@ import Button from '../../components/Button/Button'
 import { useEffect, useRef, useState } from 'react'
 import useMousePosition from '../../hooks/UseMousePosition'
 import useLocalStorage from '../../hooks/useLocalStorage'
+import { useNavigate } from 'react-router-dom'
+
 
 export const Login = () => {
+
+    const navigate = useNavigate();
+    const handleLogin = () => {
+        localStorage.setItem("isLoggedIn","true")
+        navigate("/employees")
+        
+    }
+
+
     // let [count,setCounter] = useState(0)
 
     // const increaseCounter = () => {
@@ -54,9 +65,6 @@ export const Login = () => {
                         <Button text="add" onClick={increaseCounter}/>
                         <Button text="substract" onClick={() => setCounter(count - 1)}/>
                     </div> */}
-                    <div>
-                        {mousepos.x} <br/> {mousepos.y}
-                    </div>
                     <img src={kvlogo} className="logo"/>
                     <Input label='Username' type='text' id='username' placeholder='Username' onChange={changusername} value={username} inputref = {usernameRef} 
                     endAdornment = {<button type="button"  disabled = {username.length === 0} onClick={()=>setValue('')}>Clear</button>}/>
@@ -66,7 +74,7 @@ export const Login = () => {
                     <input  type='checkbox' id='showpass' checked  = {JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
                        Show password
                     </div>
-                    <Button text="Login" onClick={()=>window.localStorage.setItem("isLoggedIn","true")}  className='loginbutton'></Button>
+                    <Button text="Login" variant='primary' onClick={handleLogin}  className='loginbutton'></Button>
             </form>
             </div>
         </div>

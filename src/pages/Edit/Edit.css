@@ -9,11 +9,11 @@ box-shadow: 1px 1px 1px #0000005a;
 border-radius: 10px;
 }
 
-.parentclass {
+.editparentclass {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
-    justify-content: space-between;
+    column-gap: 150px;
+    row-gap: 60px;
 }
 
 .AddressContainer {

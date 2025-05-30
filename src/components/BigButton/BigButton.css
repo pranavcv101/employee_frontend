@@ -32,9 +32,26 @@
   background-color: #e2e6ea;
   border-color: #dae0e5;
 } 
-.loginbutton {
+/* .loginbutton {
   width: 550px;
-  height: 50px;
+} */
+
+.button--icon-button {
+  background-color:#EAF9FF;
+  width: 200px;
+  border-radius: 25px;
+}
+.button-icon-bk {
+  background-color: #03AEEE;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  /* justify-content: center; */
+}
+
+.button-text-bk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

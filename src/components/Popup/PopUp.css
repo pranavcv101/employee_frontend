@@ -1,0 +1,49 @@
+.fullscreen {
+    top: 0;
+    left: 0;
+    position:fixed;
+    background-color: rgba(0, 0, 0, .5);
+    height: 100vh;
+    width: 100vw;
+    z-index: 21 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    height: 300px;
+    width: 600px;
+    z-index: 21;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 100px;
+}
+
+.box h2 {
+    align-items: center;
+}
+
+.box p {
+    align-items: center;
+}
+.popup-buttons {
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.confirmbutton {
+background-color:#03aeee ;
+width: 100px;
+height: 40px;
+color: white;
+}
+
+.cancelbutton {
+background-color: white;
+width: 100px;
+}
