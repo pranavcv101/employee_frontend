@@ -4,12 +4,12 @@ import Input from '../../components/Input/input'
 import { Select } from '../../components/Select/Select'
 import Button from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom'
-
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { EMPLOYEE_ACTION_TYPES } from '../../store/employee/employee.types'
 // import { useAppDispatch } from '../../store/store'
 import { store } from '../../store/store'
+
 
 
 export const CreateEmployee = () => {
@@ -32,6 +32,7 @@ export const CreateEmployee = () => {
             role:"",
             joining:"",
             status:"",
+
         })
 
     const onChange = (field: string,value :string) => {
