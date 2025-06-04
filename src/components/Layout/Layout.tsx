@@ -13,8 +13,9 @@ export const Layout=({
     }) => {
 
         function isLoggedIn(){
-            const token = window.localStorage.getItem("isLoggedIn");
-            return token === "true";
+            const token = window.localStorage.getItem("token");
+            if(token)
+                return true;
         }
 
         if(!isLoggedIn()){

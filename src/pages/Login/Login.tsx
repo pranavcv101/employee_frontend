@@ -8,16 +8,43 @@ import { useEffect, useRef, useState } from 'react'
 import useMousePosition from '../../hooks/UseMousePosition'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { useNavigate } from 'react-router-dom'
+import { useLoginMutation } from '../../api-services/auth/login.api'
 
 
 export const Login = () => {
+    const [error,setError] =   useState("")
+    const [login,{isLoading}] = useLoginMutation();
+    // const [userName,setUserName] = useState("")
+    const [password,setPassword] = useState("")
+    const [userName,setValue] = useState('')
 
+
+    const onLogin = async() => {
+        // const response = await login({email:userName , password:password});
+        // if(response?.data?.accessToken){
+        //     localStorage.setItem("token",response.data.accessToken);
+        //     navigate("/employees");
+        // }
+
+
+        login({email:userName,password:password}).unwrap()
+        .then((response) => {
+            localStorage.setItem("token",response.accessToken);
+            navigate("/employees");
+        })
+        .catch((error)=>{
+            setError(error.data.message)
+        });
+    };
+
+
+    
     const navigate = useNavigate();
-    const handleLogin = () => {
-        localStorage.setItem("isLoggedIn","true")
-        navigate("/employees")
+    // const handleLogin = () => {
+    //     localStorage.setItem("isLoggedIn","true")
+    //     navigate("/employees")
         
-    }
+    // }
 
 
     // let [count,setCounter] = useState(0)
@@ -25,27 +52,23 @@ export const Login = () => {
     // const increaseCounter = () => {
     //     setCounter(count + 1)
     // }
-    let mousepos = useMousePosition();
 
-    let [username,setValue] = useState('')
-    const changusername  = (event:any) => {
+    const changeUserName  = (event:any) => {
         setValue(event.target.value)
-        console.log(event)
     }
-    let [password,setPassword] = useState('')
     let [message , setMessage] = useState('')
 
     // let [showpass,setShowPass] = useState(true)
     let [showpass ,setShowPass] = useLocalStorage("showpass","false")
     const usernameRef = useRef<HTMLInputElement>(null)
     useEffect(()=> {
-       const x =username.length;
-       if(x>5)(
+       const x =userName.length;
+       if(x>15)(
         setMessage("username exceedeed")
        )
        else
         setMessage('')
-    },[username])
+    },[userName])
     
     useEffect(()=> {
         if(usernameRef.current){
@@ -66,15 +89,17 @@ export const Login = () => {
                         <Button text="substract" onClick={() => setCounter(count - 1)}/>
                     </div> */}
                     <img src={kvlogo} className="logo"/>
-                    <Input label='Username' type='text' id='username' placeholder='Username' onChange={changusername} value={username} inputref = {usernameRef} 
-                    endAdornment = {<button type="button"  disabled = {username.length === 0} onClick={()=>setValue('')}>Clear</button>}/>
+                    <Input label='Username' type='text' id='username' placeholder='Username' onChange={changeUserName} value={userName} inputref = {usernameRef} 
+                    endAdornment = {<button type="button"  disabled = {userName.length === 0} onClick={()=>setValue('')}>Clear</button>}/>
                     <p>{message}</p>
+                    <p>{error}</p>
                     <Input label='Password' type={JSON.parse(showpass)?'password':'text'} id='password' placeholder='Password' onChange = {(event:any) => {setPassword(event.target.value)} } value ={password}/>
                     <div>
-                    <input  type='checkbox' id='showpass' checked  = {JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
+                    <input  type='checkbox' onChange={()=>{}} id='showpass' checked = {JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
                        Show password
                     </div>
-                    <Button text="Login" variant='primary' onClick={handleLogin}  className='loginbutton'></Button>
+                    
+                    <Button  text="Login" variant='primary' onClick={onLogin} disabled = {isLoading} className='loginbutton'></Button>
             </form>
             </div>
         </div>

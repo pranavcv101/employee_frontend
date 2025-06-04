@@ -5,7 +5,9 @@ const Input = ({label="",type,id,placeholder,onChange,value,inputref , endAdornm
     {label?:string,type?:string,id?:string,placeholder?:string , inputref?:any ,onChange?:(event:any) => void, value?:any , endAdornment?:ReactNode})=>{
     return (
         <div>
+            <label htmlFor={id}>
             {label}
+            </label>
             <div className='WrapperContainer'>
                 <input type={type} id={id} name={label} required  className="inputWrapper" placeholder={placeholder} value = {value} onChange={onChange} ref={inputref}/>
                 {endAdornment}

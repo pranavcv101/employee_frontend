@@ -6,19 +6,22 @@ const Button = ({
   variant,
   type = "button",
   className,
-  icon
+  icon,
+  disabled
 }: {
   text?: string;
   onClick?: () => void;
   type?: any;
   variant?:string;
   className?: string;
-  icon?:string
+  icon?:string;
+  disabled?:boolean;
 }) => {
   return (
         <button
         className={`button  button--${variant} ${className}`}
         onClick={onClick} type ={type}
+        disabled={disabled}
         >
         {text}
         </button>

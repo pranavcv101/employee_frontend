@@ -11,25 +11,43 @@ import { Select } from "../../components/Select/Select";
 // const navigate  = useNavigate();
 import { useSelector } from "react-redux";
 import type { EmployeeState } from "../../store/employee/employee.types";
+import { useAppSelector } from "../../store/store";
+import { useDeleteEmployeeMutation, useGetEmployeeListQuery } from "../../api-services/employees/employees.api";
+
 
 export const EmployeeList = () => {
-
+    const navigate = useNavigate()
+ 
+    
     const [searchParams,setSearchParams] = useSearchParams()
+    const [deleteId] = useDeleteEmployeeMutation()
+    const [idToDelete , setIdToDelete] = useState(0)
+    const [showDel,setDel]= useState(false)
 
     const handleChange = (event:any) => {
         setSearchParams({status:event?.target.value})
     }
 
+    const handleEdit = (event:any ,id:number)=> {
+        event.stopPropagation()
+        navigate(`/employees/edit/${id}`)
+    }
 
-    const navigate = useNavigate()
+
     // const {val}= useParams();
-    const [showDel,setDel]= useState(false)
-    const handleDelete = (event:any) => {
+
+    const handleDelete = (event:any, id:number) => {
         event.stopPropagation()
         setDel(true)
+        setIdToDelete(id)
     }
 
     const handleCancel = () => {
+        setDel(false)
+    }
+
+    const handleSubmit = () => {
+        deleteId({id:idToDelete})
         setDel(false)
     }
 
@@ -98,8 +116,28 @@ export const EmployeeList = () => {
     // }
     // ]
     
-    const unfilteredEmplooyees = useSelector((state:EmployeeState)=>state.employees)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // const unfilteredEmplooyees = useSelector((state:EmployeeState)=>state.employees)
+    // const unfilteredEmplooyees = useAppSelector((state:any)=>state.employee.employees)
+
+
     
+
+
     // const [emplooyees,setFilteredEmployees] = useState(unfilteredEmplooyees)
     
     // useEffect(()=>{
@@ -112,8 +150,13 @@ export const EmployeeList = () => {
     //     }
     // },[searchParams])
 
+
+
+    const {data:unfilteredEmplooyees}= useGetEmployeeListQuery({})
+
+
     const filtervalue = searchParams.get("status") || "All"
-    const emplooyees = unfilteredEmplooyees.filter((emp)=>(emp.status==filtervalue || 'All' == filtervalue))
+    const emplooyees = unfilteredEmplooyees?.filter((emp:any)=>(emp.status==filtervalue || 'All' == filtervalue))
 
     return (
         <>
@@ -124,9 +167,9 @@ export const EmployeeList = () => {
             <div className="filterby">
                  <select id='status' className="filterselect" onChange={handleChange}>
                     <option value='All' selected>All</option>
-                    <option value='Probation'>Probation</option>
-                    <option value= 'Inactive'>Inactive</option>
-                    <option value= "Active">Active</option>
+                    <option value='PROBATION'>PROBATION</option>
+                    <option value= 'INACTIVE'>INACTIVE</option>
+                    <option value= "ACTIVE">ACTIVE</option>
                 </select>
             </div>
             <BigButton text = "Create employee" icon={icon} variant="icon-button" onClick={handleClick}/>
@@ -143,25 +186,25 @@ export const EmployeeList = () => {
                   <div className="columnhead">Action</div>
             </div>
             {
-                emplooyees.map((emp)=>{
+                emplooyees?.map((emp:any)=>{
                     return(
-                        <div className="row" onClick={()=>navigate(`/employees/${emp.employeeId}`)}>
+                        <div className="row" onClick={()=>navigate(`/employees/${emp.id}`)}>
                             <div className="data">{emp.name}</div>
-                            <div className="data">{emp.employeeId}</div>
+                            <div className="data">{emp.id}</div>
                             {/* <div className="data">{emp.joining}</div> */}
                             <div className="data">{emp.role}</div>
                             <div className={`data status ${emp.status}`}>{emp.status}</div>
                             <div className="data">{emp.experience} Years</div>
                             <div className="data">
-                                <button className="icon-only" onClick={handleDelete}><img src={bin}/></button>
-                                <button className="icon-only" onClick={()=>{navigate(`/employees/edit/${emp.employeeId}`)}}><img src={pencil}/></button>
+                                <button className="icon-only" onClick={(e)=>{handleDelete(e,emp.id)}}><img src={bin}/></button>
+                                <button className="icon-only" onClick={(e)=>{handleEdit(e,emp.id)}}><img src={pencil}/></button>
                             </div>
                         </div>
                     ) 
                 })
             }
             {
-                showDel &&  <PopUp onCancel={handleCancel}/>
+                showDel &&  <PopUp onCancel={handleCancel} onSubmit={handleSubmit}/>
             }
 
         </div>

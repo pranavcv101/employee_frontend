@@ -1,0 +1,89 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login Page > should match snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="left-panel"
+    >
+      <img
+        class="profile"
+        src="/src/assets/kv-login.jpeg"
+      />
+    </div>
+    <div
+      class="right-panel"
+    >
+      <form>
+        <img
+          class="logo"
+          src="/src/assets/kv-logo.png"
+        />
+        <div>
+          <label
+            for="username"
+          >
+            Username
+          </label>
+          <div
+            class="WrapperContainer"
+          >
+            <input
+              class="inputWrapper"
+              id="username"
+              name="Username"
+              placeholder="Username"
+              required=""
+              type="text"
+              value=""
+            />
+            <button
+              disabled=""
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+        <p />
+        <p />
+        <div>
+          <label
+            for="password"
+          >
+            Password
+          </label>
+          <div
+            class="WrapperContainer"
+          >
+            <input
+              class="inputWrapper"
+              id="password"
+              name="Password"
+              placeholder="Password"
+              required=""
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <input
+            id="showpass"
+            type="checkbox"
+          />
+          Show password
+        </div>
+        <button
+          class="button  button--primary loginbutton"
+          type="button"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
