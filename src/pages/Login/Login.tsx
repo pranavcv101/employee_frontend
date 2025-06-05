@@ -25,8 +25,6 @@ export const Login = () => {
         //     localStorage.setItem("token",response.data.accessToken);
         //     navigate("/employees");
         // }
-
-
         login({email:userName,password:password}).unwrap()
         .then((response) => {
             localStorage.setItem("token",response.accessToken);
@@ -76,7 +74,6 @@ export const Login = () => {
         }
     },[])
     return (
-
         <div className='container'>
             <div className='left-panel'>
                  <img src={kvlogin} className="profile"/>
@@ -95,7 +92,7 @@ export const Login = () => {
                     <p>{error}</p>
                     <Input label='Password' type={JSON.parse(showpass)?'password':'text'} id='password' placeholder='Password' onChange = {(event:any) => {setPassword(event.target.value)} } value ={password}/>
                     <div>
-                    <input  type='checkbox' onChange={()=>{}} id='showpass' checked = {JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
+                    <input  type='checkbox' onChange={()=>{}} id='showpass' checked = {!JSON.parse(showpass)} onClick={()=>setShowPass((!JSON.parse(showpass)).toString())}/>
                        Show password
                     </div>
                     
