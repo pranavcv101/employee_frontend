@@ -84,3 +84,16 @@ aside {
     color: white;
 
 }
+
+.profilebox {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: lightgreen;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    margin-left: 20px;
+    align-items: center;
+    color: white;
+
+}

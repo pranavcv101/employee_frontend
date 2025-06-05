@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import userEvent from "@testing-library/user-event";
 import { Login } from "../../pages/Login/Login";// Mock react-router-dom's useNavigate
-import { useLoginMutation } from "../../api-services/auth/login.api";
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
@@ -12,7 +11,8 @@ vi.mock("react-router-dom", async () => {
     ...actual,
     useNavigate: () => mockNavigate,
   };
-});// Mock the store
+});
+// Mock the store
 const mockStore = configureStore({
   reducer: {
     employee: (state = { employees: [] }) => state,
@@ -81,5 +81,4 @@ it("should handle successful login", async () => {
       expect(mockNavigate).toHaveBeenCalledWith("/employees");
     });
   });
-
 });

@@ -1,9 +1,7 @@
-import { GetEmployeeById } from "../../pages/GetEmployee/GetEmployeeById";
 import type{ EmployeeId } from "./types";
-
 import baseApi from "../api";
 import type { Employee } from "../../store/employee/employee.types";
-import { CreateEmployee } from "../../pages/Create_Employee/CreateEmployee";
+
 
 
 export const employeeApi = baseApi.injectEndpoints({
@@ -16,25 +14,23 @@ export const employeeApi = baseApi.injectEndpoints({
             query:({id}) => ({
                 url:`/employee/${id}`,
                 method:'DELETE'
-            }) ,
+            }),
             invalidatesTags:['EMPLOYEES']
-        }) ,
+        }),
         GetEmployeeById :builder.query<Employee,EmployeeId>({
-            query: ({id})=>({
+            query: ({id}) =>  ({
                 method:'GET',
                 url:`/employee/${id}`
             }),
             providesTags:['EMPLOYEE_DETAILS']
-
         }) ,
         updateEmployee : builder.mutation<Employee,Employee>({
-            query : (employee)=> ({
+            query : (employee) => ({
                 url:`/employee/${employee.id}`,
                 method : 'PUT',
                 body:employee
             }),
             invalidatesTags:['EMPLOYEE_DETAILS']
-
         }),
         CreateEmployee: builder.mutation<Employee,Employee> ({
             query :  (employee) => ({

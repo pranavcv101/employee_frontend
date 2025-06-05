@@ -8,8 +8,6 @@ import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { EMPLOYEE_ACTION_TYPES } from '../../store/employee/employee.types'
 // import { useAppDispatch } from '../../store/store'
-import { store, useAppDispatch } from '../../store/store'
-import { addEmployee } from '../../store/employee/employeeReducer'
 import { useCreateEmployeeMutation } from '../../api-services/employees/employees.api'
 import { useGetDepartmentListQuery } from '../../api-services/department/department.api'
 

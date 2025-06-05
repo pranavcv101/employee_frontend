@@ -5,20 +5,13 @@ import icon from "../../assets/+.svg"
 import pencil from '../../assets/pencil.svg';
 import bin from '../../assets/bin.svg'
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PopUp from "../../components/Popup/PopUp";
-import { Select } from "../../components/Select/Select";
-// const navigate  = useNavigate();
-import { useSelector } from "react-redux";
-import type { EmployeeState } from "../../store/employee/employee.types";
-import { useAppSelector } from "../../store/store";
 import { useDeleteEmployeeMutation, useGetEmployeeListQuery } from "../../api-services/employees/employees.api";
 
 
 export const EmployeeList = () => {
     const navigate = useNavigate()
- 
-    
     const [searchParams,setSearchParams] = useSearchParams()
     const [deleteId] = useDeleteEmployeeMutation()
     const [idToDelete , setIdToDelete] = useState(0)
@@ -150,8 +143,6 @@ export const EmployeeList = () => {
     //     }
     // },[searchParams])
 
-
-
     const {data:unfilteredEmplooyees}= useGetEmployeeListQuery({})
 
 
@@ -166,7 +157,7 @@ export const EmployeeList = () => {
             Filter By
             <div className="filterby">
                  <select id='status' className="filterselect" onChange={handleChange}>
-                    <option value='All' selected>All</option>
+                    <option value='All' selected >All</option>
                     <option value='PROBATION'>PROBATION</option>
                     <option value= 'INACTIVE'>INACTIVE</option>
                     <option value= "ACTIVE">ACTIVE</option>
@@ -191,7 +182,7 @@ export const EmployeeList = () => {
                         <div className="row" onClick={()=>navigate(`/employees/${emp.id}`)}>
                             <div className="data">{emp.name}</div>
                             <div className="data">{emp.id}</div>
-                            {/* <div className="data">{emp.joining}</div> */}
+                            <div className="data">{emp.dateOfJoining.toString().substring(0,10)}</div>
                             <div className="data">{emp.role}</div>
                             <div className={`data status ${emp.status}`}>{emp.status}</div>
                             <div className="data">{emp.experience} Years</div>

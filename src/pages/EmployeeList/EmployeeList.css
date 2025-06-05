@@ -7,7 +7,7 @@
 
 .row {
     display: flex;
-    gap:40px;
+    gap:30px;
     justify-content: space-around;
     width:100%;
     flex-direction: row;
@@ -17,8 +17,13 @@
 
 .rowhead {
     background-color: #EAF9FF;
+    padding: 25px;
 }
 
+.columnhead {
+    width: 250px;
+    margin-left: 100px;
+}
 .data {
     display: flex;
     justify-content: space-around;
@@ -34,6 +39,9 @@
 .PROBATION {
     background-color: #F5ECB8;
 }
+
+
+
 
 .ACTIVE {
     background-color: #D3F4BE;

@@ -1,19 +1,22 @@
-import { useNavigate, useParams } from "react-router-dom"
-import "./GetEmployeeById.css"
+import { useNavigate } from "react-router-dom"
+import "./ProfilePage.css"
 import BigButton from "../../components/BigButton/BigButton"
 import icon from '../../assets/whitepencil.svg'
 import { useGetEmployeeByIdQuery } from "../../api-services/employees/employees.api"
-export const GetEmployeeById = () => {
+
+export const ProfilePage = () => {
     const navigate = useNavigate();
-    // const handleClick = ({emp}:{emp:number}) => {
-    //     navigate("edit"+{emp})
-    // }
-    // const [searchparams, setSearchParams] = useSearchParams();
-    const { id } = useParams()
+    const token = localStorage.getItem('token')
+    if(!token){
+        return (
+            <div>NOt found</div>
+        )
+    }
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-','+').replace('_','/')
+    const data = JSON.parse(window.atob(base64))
+    const id = data.id
     const { data : emplooyee } = useGetEmployeeByIdQuery({id:Number(id)})
-
-    // const emplooyee = emplooyees.find((emp) => (emp.id == Number(id)));
-
     if (!emplooyee) {
         return <p>not found</p>
     }
@@ -28,9 +31,13 @@ export const GetEmployeeById = () => {
                 <div className="details-head">Name</div>
                 <div >{emplooyee.name}</div>
             </div>
-            <div className="component">
+            {/* <div className="component">
                 <div className="details-head">Joining</div>
-                <div>{emplooyee.dateOfJoining.toString().substring(0,10)}</div>
+                <div>{emplooyee.dateOfJoining}</div>
+            </div> */}
+            <div className="component">
+                <div className="details-head">Email</div>
+                <div>{emplooyee.email}</div>
             </div>
             <div className="component">
                 <div className="details-head">Role</div>
@@ -44,23 +51,14 @@ export const GetEmployeeById = () => {
                 <div className="details-head">Experience</div>
                 <div>{emplooyee.experience}</div>
             </div>
-           
-            <div className="component">
+            {/* <div className="component">
                 <div className="details-head">Address</div>
-                <div className="details-head">HouseNo</div>
-                <div>{emplooyee.address.houseNo}</div>
-                 <div className="details-head">Line 1</div>
-                <div>{emplooyee.address.line1}</div>
-                 <div className="details-head">Line 2</div>
-                <div>{emplooyee.address.line2}</div>
-                 <div className="details-head">Pincode</div>
-                <div>{emplooyee.address.pincode}</div>
-            </div>
-             <div className="component ">
+                <div>{emplooyee.address}</div>
+            </div> */}
+            <div className="component ">
                 <div className="details-head">Id</div>
                 <div>{emplooyee.employeeId}</div>
             </div>
-            
 
             {/* <div>
                 <button type="button" onClick={() => { console.log('hello', searchparams.get('hello')) }}>get</button>

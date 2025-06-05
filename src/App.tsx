@@ -10,6 +10,7 @@ import { GetEmployeeById } from './pages/GetEmployee/GetEmployeeById'
 import { EditEmployee } from './pages/Edit/Edit'
 import { Provider } from "react-redux";
 import { store } from './store/store'
+import { ProfilePage } from "./pages/Profile_page/ProfilePage"
 
 const router = createBrowserRouter([
   //  {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
     path:"/login",
     element:<Login/>,
     errorElement:<NotFound/>
+  },
+    {
+    path:"/profile",
+    element:<Layout />,
+    children:[
+      {index:true ,  element:<ProfilePage/>}
+    ]
+    // errorElement:<NotFound/>
   },
   {
     path:"/employees",

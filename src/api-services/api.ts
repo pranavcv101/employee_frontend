@@ -12,7 +12,7 @@ const baseApi = createApi({
             return headers;
         }
     }),
-
+    
     refetchOnMountOrArgChange:true,
     refetchOnReconnect:true,
     endpoints:()=>({}),

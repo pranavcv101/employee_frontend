@@ -21,7 +21,6 @@ export const Layout=({
         if(!isLoggedIn()){
             return <Navigate to="/login"/>
         }
-
         return     (
             <div className="flex-container">
                     <Aside sidebar = "Employee List"/>
